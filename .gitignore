@@ -84,5 +84,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-#Config file
-config.js
+#ENV variables
+.env

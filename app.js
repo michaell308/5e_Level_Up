@@ -15,12 +15,6 @@ app.post('/', urlencodedParser, function(req,res) {
     console.log(req.body);
     console.log(req.body.level);
     console.log(req.body.class);
-    /*var connection = mysql.createConnection({
-    host : '',
-    user : '',
-    password : '',
-    database : ''
-    });*/
     var connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query('SELECT id FROM test_table', function (err, rows, fields) {
