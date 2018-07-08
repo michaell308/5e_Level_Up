@@ -7,11 +7,13 @@ $('.classButton').click(function(e) {
 
 $('#client-form').on('submit', function (event) {
     event.preventDefault(); //prevent form from refreshing page
-    document.getElementById("output").textContent = "Class:" + document.getElementById('classInput').value;
+    var classInput = document.getElementById('classInput').value;
+    var levelInput = document.getElementById('levelInput').value;
+    document.getElementById("output").textContent = "Level:" + levelInput + " Class:" + classInput;
     
     var data = {};
-	data.title = "title";
-	data.message = "message";
+	data.level = levelInput;
+	data.class = classInput;
 	
 	$.ajax({
 		type: 'POST',

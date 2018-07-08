@@ -4,25 +4,30 @@ var port = process.env.PORT || 3000,
     path = require("path"),
     bodyParser = require('body-parser'),
     urlencodedParser = bodyParser.urlencoded({ extended:false }),
-    mysql = require('mysql');
+    mysql = require('mysql'),
+    config = require('./config');
 
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(bodyParser.json());
 
 
 app.post('/', urlencodedParser, function(req,res) {
+    console.log(req.body);
+    console.log(req.body.level);
+    console.log(req.body.class);
     /*var connection = mysql.createConnection({
     host : '',
     user : '',
     password : '',
     database : ''
-    });
+    });*/
+    var connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query('SELECT id FROM test_table', function (err, rows, fields) {
       if (err) throw err;
       res.send(JSON.stringify(rows[0].id));
       connection.end();
-    })*/
+    })
 });
 
 app.listen(port, function() {
