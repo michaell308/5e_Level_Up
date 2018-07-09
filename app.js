@@ -14,9 +14,10 @@ app.post('/', urlencodedParser, function(req,res) {
     console.log(req.body);
     console.log(req.body.level);
     console.log(req.body.class);
-    pool.query('SELECT id FROM test_table', function(err, rows, fields) {
+    pool.query('CALL my_procedure(?,?)',[req.body.class, req.body.level], function(err, rows, fields) {
       if (err) throw err;
-      console.log(rows[0].id);
+      console.log(rows[0]);
+      //console.log(rows[0][0].id);
     });
 });
 
