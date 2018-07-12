@@ -11,14 +11,18 @@ app.use(bodyParser.json());
 
 
 app.post('/', urlencodedParser, function(req,res) {
-    console.log(req.body);
-    console.log(req.body.level);
-    console.log(req.body.class);
-    pool.query('CALL my_procedure(?,?)',[req.body.class, req.body.level], function(err, rows, fields) {
-      if (err) throw err;
-      console.log(rows[0]);
-      //console.log(rows[0][0].id);
-    });
+    if (req.body.level !== undefined) {
+        pool.query('CALL level_up(?,?)',[req.body.class, req.body.level], function(err, rows, fields) {
+          if (err) throw err;
+          res.send(rows[0][0]);
+        });
+    }
+    else if (req.body.feature !== undefined) {
+        pool.query('CALL get_feature(?)',req.body.feature, function(err, rows, fields) {
+          if (err) throw err;
+          res.send(rows[0][0]);
+        });
+    }
 });
 
 app.listen(port, function() {
