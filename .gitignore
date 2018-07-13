@@ -86,3 +86,6 @@ $RECYCLE.BIN/
 
 #ENV variables
 .env
+
+#SQL statements
+sql_statements
