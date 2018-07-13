@@ -24,7 +24,7 @@ app.post('/', urlencodedParser, function(req,res) {
             res.send("Error: Invalid class");
         }
         else {
-            pool.query('CALL level_up(?,?)',[req.body.class, level+1], function(err, rows, fields) {
+            pool.query('CALL level_up(?,?)',[req.body.class, parseInt(level)+1], function(err, rows, fields) {
               if (err) throw err;
               res.send(rows[0][0]);
             });
