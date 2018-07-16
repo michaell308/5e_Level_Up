@@ -135,13 +135,12 @@ $('#client-form').on('submit', function (event) {
 					table.appendChild(dataRow);
 				}
 				//Spell Save DC and Spell Attack Modifier
-				var is_asi = data.is_asi;
 				var stat_modifier = data.stat_modifier;
 				var spellSaveDC = document.getElementById("spellSaveDC");
 				var spellAttackMod = document.getElementById("spellAttackMod");
 				spellSaveDC.textContent = ""; //reset spell save dc
 				spellAttackMod.textContent = ""; //reset spell attack modifier
-				if (stat_modifier !== "" && (is_asi === 1 || is_pbi === 1)) {
+				if (stat_modifier !== "" && is_pbi === 1) {
 					spellSaveDC.textContent = "Update Spell Save DC = 8 + " + data.prof_bonus +" + " + stat_modifier +" modifier";
 					spellAttackMod.textContent = "Update Spell Attack Modifier = " + data.prof_bonus +" + " + stat_modifier +" modifier";
 				}
