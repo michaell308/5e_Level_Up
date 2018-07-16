@@ -14,7 +14,7 @@ var classes = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Palad
 app.post('/', urlencodedParser, function(req,res) {
     if (req.body.level !== undefined) {
         var level = req.body.level;
-        if (isNaN(level) || level % 1 !== 0) {
+        if (isNaN(level) || level % 1 !== 0) { //is not a number or is not an integer
             res.send("Error: Level is not a number");
         } 
         else if (level === "" || level < 1 || level > 19) {

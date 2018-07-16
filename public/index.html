@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122392724-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-122392724-1');
+    </script>
     <title>5e Level Up Tool</title>
   </head>
   <body>
     <div class="textColumn">
       <h1>5e Level Up Tool</h1>
-      <form id="client-form" method="POST">
+      <form id="client-form" method="POST" autocomplete="off">
         <label for="level">Level:</label>
         <input type="text" id="levelInput" name="level" value=""/>
         <br>
@@ -40,6 +49,8 @@
       <p id="spellSaveDC"></p>
       <p id="spellAttackMod"></p>
       <p id="classOutput"></p>
+      <ul id="eldritchInvocations" class="staticFeature">
+      </ul>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/client.js"></script>
