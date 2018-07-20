@@ -21,7 +21,7 @@ app.post('/', urlencodedParser, function(req,res) {
             res.send("Error: Level should be between 1-19")
         }
         else if (!classes.includes(req.body.class)) {
-            res.send("Error: Invalid class");
+            res.send("Error: You must select a class");
         }
         else {
             pool.query('CALL level_up(?,?)',[req.body.class, parseInt(level)+1], function(err, rows, fields) {
