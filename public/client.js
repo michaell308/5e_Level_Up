@@ -14,15 +14,19 @@ $('.classButton').css('background-image', function(index,currentvalue) {
 	return 'url(' + this.value + 'Button.png)';
 });
 
-
 $('.classButton').click(function(e) {
 	//update hidden class input when any class button is clicked 
 	document.getElementById('classInput').value = this.value;
 	if (lastClickedButton !== null) {
-		lastClickedButton.style.backgroundColor = 'white';
+		lastClickedButton.style.backgroundImage = 'url(' + lastClickedButton.value + 'Button.png)';
+		lastClickedButton.style.color = '#cea564'; 
 	}
 	lastClickedButton = this;
-	this.style.backgroundColor = 'red';
+	//this.style.backgroundColor = 'red';
+	//this.style.background = "linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,1)), url(" + this.value + "Button.png) no-repeat center";
+	this.style.background = "";
+	this.style.color = "black";
+	//this.style.color = 'white';
 });
 
 $('.staticFeature').on('click','.featureButton',function() {
