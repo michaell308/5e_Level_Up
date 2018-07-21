@@ -1,10 +1,9 @@
 console.log('Client-side code running');
 //allows /r/n on given element
-document.getElementById("outputHeader").setAttribute('style', 'white-space: pre-line;');
-document.getElementById("classOutput").setAttribute('style', 'white-space: pre-line;');
+//document.getElementById("outputHeader").setAttribute('style', 'white-space: pre-line;');
+//document.getElementById("classOutput").setAttribute('style', 'white-space: pre-line;');
 //document.getElementById("eldritchInvocations").setAttribute('style', 'white-space: pre-line;');
 document.getElementById("subClass").setAttribute('style', 'white-space: pre-line;');
-//document.getElementById("liInvocation").setAttribute('style', 'white-space: pre-line;');
 
 var lastClickedButton = null;
 
@@ -84,24 +83,30 @@ $('#client-form').on('submit', function (event) {
             if (typeof data  === 'string') {
             	document.getElementById("error").textContent = data; //write error
             	//reset all fields
+            	document.getElementById("outputHeader").textContent = "";
             	document.getElementById("hp").textContent = "";
             	document.getElementById("maxHitDie").textContent = "";
             	document.getElementById("profBonus").textContent = "";
             	document.getElementById("spellSaveDC").textContent = "";
             	//$("#features").empty();
-            	$("#spellSlotTable").empty();
+            	document.getElementById("liFeature").textContent = "";
+            	//$("#spellSlotTable").empty();
+            	document.getElementById("liSpellSlot").textContent = "";
             	document.getElementById("spellAttackMod").textContent = "";
             	document.getElementById("cantripsKnown").textContent = "";
             	document.getElementById("spellsKnown").textContent = "";
 				document.getElementById("classOutput").textContent = "";
-				$("#eldritchInvocations").empty();
+				document.getElementById("classOutput2").textContent = "";
+				document.getElementById("classOutput3").textContent = "";
+				//$("#eldritchInvocations").empty();
+				document.getElementById("liInvocation").textContent = "";
 				document.getElementById("subClass").textContent = "";
             }
             else {
             	document.getElementById("outputHeader").textContent = "To Become a Level " + data.level + " " + data.class + ": ";
             	document.getElementById("error").textContent = "";
 	            //HP
-	            document.getElementById("hp").innerHTML = "HP: Roll a d" + data.hit_die + ". Your hp increases by (the number you rolled) + (your constitution modifier)";
+	            document.getElementById("hp").innerHTML = "<b>HP:</b> Roll a d" + data.hit_die + ". Your hp increases by (the number you rolled) + (your constitution modifier)";
 	            //Max hit die
 	            document.getElementById("maxHitDie").innerHTML = "<b>Hit Die:</b> The maximum number of hit die you have is now " + data.level;
 	            //Proficiency bonus
@@ -233,7 +238,7 @@ $('#client-form').on('submit', function (event) {
 						if (num_rages === 99) {
 							num_rages = "Unlimited";
 						}
-						classOutput.innerHTML = "<b>Number of Rages:</b> You now have " + num_rages + " rages\r\n";
+						classOutput.innerHTML = "<b>Number of Rages:</b> You now have " + num_rages + " rages";
 					}
 					var rage_damage = data.rage_damage;
 					if (rage_damage !== null) {
@@ -244,20 +249,20 @@ $('#client-form').on('submit', function (event) {
 				else if (userClass === "Bard") {
 					var inspiration_die = data.inspiration_die;
 					if (inspiration_die !== null) {
-						classOutput.innerHTML = "<b>Inspiration Die:</b> Your inspiration die is now a d" + inspiration_die + "\r\n";
+						classOutput.innerHTML = "<b>Inspiration Die:</b> Your inspiration die is now a d" + inspiration_die;
 					}
 				}
 				//Monk
 				else if (userClass === "Monk") {
 					var ki_points = data.level;
-					classOutput.innerHTML = "<b>Ki Points:</b> You now have " + ki_points + " ki points" + "\r\n\r\n";
+					classOutput.innerHTML = "<b>Ki Points:</b> You now have " + ki_points + " ki points";
 					var martial_arts_damage = data.martial_arts_damage;
 					if (martial_arts_damage !== null) {
-						classOutput2.innerHTML = "<b>Martial Arts Damage:</b> Your martial arts damage is now 1d" + martial_arts_damage + "\r\n\r\n";
+						classOutput2.innerHTML = "<b>Martial Arts Damage:</b> Your martial arts damage is now 1d" + martial_arts_damage;
 					}
 					var unarmored_movement = data.unarmored_movement;
 					if (unarmored_movement !== null) {
-						classOutput2.innerHTML = "<b>Unarmored Movement:</b> Your unarmored movement increases to +" + unarmored_movement + " ft.\r\n\r\n"
+						classOutput2.innerHTML = "<b>Unarmored Movement:</b> Your unarmored movement increases to +" + unarmored_movement + " ft.";
 					}
 					if (is_pbi === 1) {
 						classOutput3.innerHTML = "<b>Update Ki Save DC</b> = 8 + " + data.prof_bonus + " + your Wisdom modifier";
@@ -280,21 +285,21 @@ $('#client-form').on('submit', function (event) {
 					var spell_slots = data.spell_slots;
 					if (spell_slots !== null && spell_slots !== "") {
 						var num_spell_slots = spell_slots.split(",")[0];
-						classOutput.innerHTML = "<b>Number of Spell Slots:</b> You now have " + num_spell_slots + " spell slots\r\n\r\n"; 
+						classOutput.innerHTML = "<b>Number of Spell Slots:</b> You now have " + num_spell_slots + " spell slots"; 
 					}
 					var slot_level = data.slot_level;
 					if (slot_level !== null) {
-						classOutput.innerHTML += "<b>Slot Level:</b> Your slot level has increased to " + slot_level + " level\r\n\r\n";
+						classOutput.innerHTML += "<b>Slot Level:</b> Your slot level has increased to " + slot_level + " level";
 					}
 					var invocations_known = data.invocations_known;
 					if (invocations_known !== null) {
-						classOutput2.innerHTML = "<b>Invocations Known:</b> You now know " + invocations_known + " invocations\r\n\r\n";
+						classOutput2.innerHTML = "<b>Invocations Known:</b> You now know " + invocations_known + " invocations";
 					}
 					//document.getElementById("liInvocation").innerHTML = "You can choose one of the invocations you know and replace it with another invocation that you could learn at this level." +
 					//document.getElementById("liInvocation").innerHTML;
 					var liInvocation = document.getElementById("liInvocation");
 					//liInvocation.style.display = "inline";
-					liInvocation.innerHTML = "<b>Eldritch Invocations:</b> You can choose one of the invocations you know and replace it with another.\r\nIf an eldritch invocation has prerequisites, you must meet them to learn it. You can learn the invocation at the same time that you meet its prerequisites. A level prerequisite refers to your level in this class.";
+					liInvocation.innerHTML = "<b>Eldritch Invocations:</b> You can choose one of the invocations you know and replace it with another. If an eldritch invocation has prerequisites, you must meet them to learn it. You can learn the invocation at the same time that you meet its prerequisites. A level prerequisite refers to your level in this class.";
 					var eldritchInvocationUL = document.createElement("UL");
 					eldritchInvocationUL.className = "invocationTable";
 					//eldritchInvocationUL.className = "staticFeature";
