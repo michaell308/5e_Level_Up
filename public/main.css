@@ -32,6 +32,15 @@ width: 70%;
     
 }
 
+ul {
+  padding: 0;
+  margin-left:1em;
+    list-style-type: circle;
+  }
+ul > div {
+  margin-left:-1em;
+}
+
 .parchmentEnds {
 	//float:left;
 	//margin: 0;
@@ -199,7 +208,8 @@ table {
 
 .staticFeature {
   //list-style-type: none;
-  //margin: 0; padding: 0;
+  //margin: 0; 
+  //padding: 0;
   //font-size:50px;
   width:95%;
   //overflow:hidden;
@@ -218,8 +228,8 @@ table {
 }
 
 .staticFeature > ul > li {
-	margin-bottom:2%;
-	margin-left:5%;
+	margin-bottom:1%;
+	//margin-left:5%;
 }
 
 .featureButton { 
@@ -261,16 +271,7 @@ th {
 
 .spellSlotTable {
 	width:60%;
-	margin-left:5%;
-}
-
-ol > li {
-	//float:left;
-	/*background: url('test3.png') no-repeat left top;
-	height: 54px;
-padding-left: 44px;
-padding-top: 3px;*/
-//font-size: 36px;
+	//margin-left:5%;
 }
 
 .testing {
@@ -290,37 +291,39 @@ padding-top: 3px;*/
    counter-reset: item;
 
  }
- ol > li {
+ ol > li  {
    counter-increment: item;
    //margin-bottom: 5px;
- }
- ol > li:before {
+   position: relative;
+   //margin: 0;
+   padding: 1.5em 1.5em 1.5em;
+   padding-top:0em;
+   padding-left:1em;
+   padding-right:0em;
+   padding-bottom: 2em;
 
+ }
+
+ ol > li:before {
+  left: -50px;
+  top:-15px;
+ position: absolute;
  	font-size:40px;
- 	//width:5%;
+
  	width:1.5em;
  	height:1.5em;
- 	//width:5%;
- 	//height:25%;
-   margin-right: 10px;
+   //margin-right: 10px;
    content: counter(item);
-   //background: lightblue;
    background-image: url('ink.png');
    background-size:90% 130%;
-   //background-size:cover;
    background-repeat: no-repeat;
    background-position: center center;
-   //border-radius: 100%;
    color: #cea564;
-   //width: 2.2em;
    text-align: center;
-   display: inline-block;
+   //display: inline-block;
    list-style: none;
  }
 
-.invocationTable {
-	margin-left:2%;
-}
 
 
 ul:empty {

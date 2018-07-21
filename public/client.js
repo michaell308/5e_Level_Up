@@ -101,7 +101,7 @@ $('#client-form').on('submit', function (event) {
             	document.getElementById("outputHeader").textContent = "To Become a Level " + data.level + " " + data.class + ": ";
             	document.getElementById("error").textContent = "";
 	            //HP
-	            document.getElementById("hp").innerHTML = "<b>HP:</b> Roll a d" + data.hit_die + ". Your hp increases by (the number you rolled) + (your constitution modifier)";
+	            document.getElementById("hp").innerHTML = "HP: Roll a d" + data.hit_die + ". Your hp increases by (the number you rolled) + (your constitution modifier)";
 	            //Max hit die
 	            document.getElementById("maxHitDie").innerHTML = "<b>Hit Die:</b> The maximum number of hit die you have is now " + data.level;
 	            //Proficiency bonus
@@ -144,9 +144,7 @@ $('#client-form').on('submit', function (event) {
 		              button.value = featuresArray[i];
 		              node.appendChild(button); 
 					  featureUL.appendChild(node);
-					}
-					featureUL.append(document.createElement("BR"));
-					
+					}					
 				}
 				//Spell Slots Table
 				//$("#spellSlotTable").empty(); //reset spell slots table
@@ -194,7 +192,6 @@ $('#client-form').on('submit', function (event) {
 
 					tableSS.appendChild(headerRow);
 					tableSS.appendChild(dataRow);
-					tableSS.append(document.createElement("BR"));
 				}
 				//Spell Save DC and Spell Attack Modifier
 				var stat_modifier = data.stat_modifier;
@@ -297,7 +294,7 @@ $('#client-form').on('submit', function (event) {
 					//document.getElementById("liInvocation").innerHTML;
 					var liInvocation = document.getElementById("liInvocation");
 					//liInvocation.style.display = "inline";
-					liInvocation.innerHTML = "<b>Eldritch Invocations:</b> You can choose one of the invocations you know and replace it with another";
+					liInvocation.innerHTML = "<b>Eldritch Invocations:</b> You can choose one of the invocations you know and replace it with another.\r\nIf an eldritch invocation has prerequisites, you must meet them to learn it. You can learn the invocation at the same time that you meet its prerequisites. A level prerequisite refers to your level in this class.";
 					var eldritchInvocationUL = document.createElement("UL");
 					eldritchInvocationUL.className = "invocationTable";
 					//eldritchInvocationUL.className = "staticFeature";
@@ -321,7 +318,6 @@ $('#client-form').on('submit', function (event) {
 					var fifteenthLevelPactOfChain = "Chains of Carceri";
 
 					//var eldritchInvocationUL = document.getElementById("eldritchInvocations");
-					eldritchInvocationUL.textContent = "If an eldritch invocation has prerequisites, you must meet them to learn it. You can learn the invocation at the same time that you meet its prerequisites. A level prerequisite refers to your level in this class.";
 					eldritchInvocationUL.appendChild(document.createElement("BR"));
 					eldritchInvocationUL.appendChild(document.createElement("BR"));
 					createDivUnderUL(eldritchInvocationUL,"No Prerequisites:");
