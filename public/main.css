@@ -48,6 +48,9 @@ ul > div {
     width:78%;height:150px;
     //display: block;
     //vertical-align: middle;
+    display: block;
+    margin: auto;
+    position:relative;
 }
 
 .textColumn {
@@ -94,14 +97,17 @@ ul > div {
    background-position: center;
    background-size: 75% 100%;
    //background-attachment: fixed;
-   //height:auto;
+   height:auto;
    //background-size: cover;
    //width: 100%;
-   margin-top:-30px;
+   //margin-top:-20px;
    //padding-top:-5px;
    //top:-5px;
    //margin-bottom:-20px;
    padding-bottom:10px;
+   overflow:hidden;
+   //margin-top:10px;
+   margin-top:-1px;
 }
 /* input */
 
@@ -163,11 +169,21 @@ table {
   table-layout: fixed;
 }
 
+
+tr:nth-child(even){
+  background-color: #cea564
+}
+
 .classTable { 
   width: 600px;
   border-collapse:separate; 
   border-spacing:24px;
   margin:auto;
+  
+}
+
+.classTable > tbody > tr {
+  background-color: transparent;
 }
 
 .submit {
@@ -187,7 +203,6 @@ table {
     border: none;
     outline: none;
     color:white;
-    color: #cc3300;
     color:#cea564;
           text-shadow:
     -1px -1px 0 #000,
@@ -201,6 +216,7 @@ table {
 .submit:active {
   filter:brightness(150%);
 }
+
 
 /* output */
 

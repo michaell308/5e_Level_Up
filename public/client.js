@@ -5,6 +5,14 @@ console.log('Client-side code running');
 //document.getElementById("eldritchInvocations").setAttribute('style', 'white-space: pre-line;');
 document.getElementById("subClass").setAttribute('style', 'white-space: pre-line;');
 
+jQuery(document).ready(function(){
+	//document.getElementById("scroll").style.visibility = "visible";
+	//$(".scroll").slideDown("slow");
+	//$(document.getElementById("scroll")).animate({height: 'toggle'},10600);
+});
+
+//$(document.getElementById("scroll")).animate({height: 'toggle'},'1');
+
 var lastClickedButton = null;
 
 //$('.classButton').css('background-image', 'url(SorcererButton.png)');
