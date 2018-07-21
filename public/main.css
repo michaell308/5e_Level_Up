@@ -130,6 +130,10 @@ ul > div {
   margin-right:2%;
 }
 
+#liFeature > ul ul {
+  list-style-type: disc;
+}
+
 .classButton { 
     //background-color: white;
     //font-size: 1.5vw;
@@ -216,7 +220,9 @@ tr:nth-child(even){
 .submit:active {
   filter:brightness(150%);
 }
-
+.featureButton:active {
+  filter:brightness(150%);
+}
 
 /* output */
 
@@ -263,6 +269,7 @@ tr:nth-child(even){
     background-color: Transparent;
     //background-image: ;
     border: none;
+    outline:none;
     font-size: 30px;
     //width:25%;
     text-align:left;
@@ -296,7 +303,7 @@ th {
 }
 
 .spellSlotTable {
-	width:60%;
+	width:70%;
 	//margin-left:5%;
 }
 
