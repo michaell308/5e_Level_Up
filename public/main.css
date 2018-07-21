@@ -171,6 +171,7 @@ ul > div {
 
 table {
   table-layout: fixed;
+  width:500px;
 }
 
 
@@ -302,10 +303,7 @@ th {
     //color: white;
 }
 
-.spellSlotTable {
-	width:70%;
-	//margin-left:5%;
-}
+
 
 .testing {
 	//display:inline-block;
