@@ -1,3 +1,7 @@
+body {
+  //min-width:1000px;
+}
+
 html {
 	height: 150%;
 	background-image: url("background_seamless.jpg"); 
@@ -47,7 +51,7 @@ width: 70%;
 }
 
 .headerText {
-	font-size: 50px;
+	font-size: 350%;
 	position: absolute;
     top: 25%;
     left: 50%;
@@ -56,7 +60,7 @@ width: 70%;
 }
 /* text */
 .text {
-	font-size: 25px;
+	font-size: 150%;
 	font-family: rubik;
 
 	/*text-shadow:
@@ -104,7 +108,7 @@ width: 70%;
 
 .levelInput {
     font-size: 30px;
-  width: 6%;
+  width: 110px;
   margin-bottom:1%;
   //margin-right:5%;
     margin-left:-2%;
@@ -113,8 +117,19 @@ width: 70%;
 
 .classButton { 
     //background-color: white;
-    font-size: 1.5vw;
-    min-width:100%;
+    //font-size: 1.5vw;
+    //display: inline-block;
+    font-size:200%;
+    //width:100px;
+    //height:50px;
+    width:100%;
+    //min-width:100%;
+    //max-width:120%;
+    //width:5em;
+    //height:1.3em;
+    //width:100%;
+    //width:auto;
+    //min-width:auto;
     //background-image: url("button.png");
    // background: url("button.png") no-repeat scroll 0 0 transparent;
            background: none;
@@ -151,11 +166,14 @@ width: 70%;
 	background:green;
 }*/
 
-.classTable { 
-  width: 30%;
+table {
   table-layout: fixed;
+}
+
+.classTable { 
+  width: 600px;
   border-collapse:separate; 
-  border-spacing:1em;
+  border-spacing:24px;
   margin:auto;
 }
 
@@ -170,7 +188,7 @@ width: 70%;
 .output {
 	//background-color: white;
 	visibility: hidden;
-	width: 70%;
+	width: 65%;
 	margin: auto;
 	text-align: left;
 }
@@ -242,7 +260,7 @@ th {
 }
 
 .spellSlotTable {
-	width:50%;
+	width:60%;
 	margin-left:5%;
 }
 
