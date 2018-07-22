@@ -89,3 +89,6 @@ $RECYCLE.BIN/
 
 #SQL statements
 sql_statements
+
+#Unused images
+public/unused_images

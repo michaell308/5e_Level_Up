@@ -14,73 +14,68 @@
     <link href="https://fonts.googleapis.com/css?family=Merienda:700" rel="stylesheet">
   </head>
   <body>
-    <div class="textColumn" style="text-align: center;">
-      <!--div class="header">
-        <img src="test3.png" style="width:50%;height:130px;">
-        <div class="headerText">5e Level Up Tool</div>
-      </div-->
+    <div id="fullScroll">
       <br>
       <div class="header">
-        <img src="parchmentTop.png" class="parchmentEnds">
+        <img src="images/scrollTop.png" class="parchmentEnds">
         <div class="headerText"><a href="/">5e Level Up Tool</a></div>
       </div>
-      <div class="scroll" hidden="true">
-      <div class="instructions"><p class="text" style="padding-top:2%;padding-bottom:3%">Enter your current level and choose your class. Then hit level up to find out what you need to do to level up your character.</p></div>
-      <form id="client-form" method="POST" autocomplete="off">
-        <label for="level" class="level">Level:</label>
-        <input type="text" id="levelInput" name="level" value="" class="levelInput"/>
-        <table class="classTable">
-        <tr>
-        <td><button type="button" class="classButton text" value="Barbarian">Barbarian</button></td>
-        <td><button type="button" class="classButton text" value="Bard">Bard</button></td>
-        <td><button type="button" class="classButton text" value="Cleric">Cleric</button></td>
-        </tr>
-        <tr>
-        <td><button type="button" class="classButton text" value="Druid">Druid</button></td>
-        <td><button type="button" class="classButton text" value="Fighter">Fighter</button></td>
-        <td><button type="button" class="classButton text" value="Monk">Monk</button></td>
-        </tr>
-        <tr>
-        <td><button type="button" class="classButton text" value="Paladin">Paladin</button></td>
-        <td><button type="button" class="classButton text" value="Ranger">Ranger</button></td>
-        <td><button type="button" class="classButton text" value="Rogue">Rogue</button></td>
-        </tr>
-        <tr>
-        <td><button type="button" class="classButton text" value="Sorcerer">Sorcerer</button></td>
-        <td><button type="button" class="classButton text" value="Warlock">Warlock</button></td>
-        <td><button type="button" class="classButton text" value="Wizard">Wizard</button></td>
-        </tr>
-        <input type="hidden" id="classInput" name="class" value="">
-        </tr>
-        </table>
-        <br>
-        <input type="submit" class="submit text" value="Level Up!"/>
-      </form>
-      <ol id="output" class="output">
-        <p id="error" style="color:red;text-align:center;margin-right:3%" class="text"></p>
-        <p id="outputHeader"></p>
-        <li id="hp" class="text"></li>
-        <li id="maxHitDie" class="text"></li>
-        <li id="profBonus" class="text"></li>
-        <li id="liFeature" class="staticFeature text"></li>
-        <li id="liSpellSlot" class="staticFeature text"></li>
-        <li id="cantripsKnown" class="text"></li>
-        <li id="spellsKnown" class="text"></li>
-        <li id="spellSaveDC" class="text"></li>
-        <li id="spellAttackMod"class="text"></li>
-        <li id="classOutput" class="text"></li>
-        <li id="classOutput2" class="text"></li>
-        <li id="classOutput3" class="text"></li>
-        <li id="subClass" class="text"></li>
-        <li id="liInvocation" class="staticFeature text"></li>
-        </ul>
-      </ol>
-
-      </div>
+      <div id="middleScroll" hidden="true">
+        <div class="instructions"><p class="text">Enter your current level and choose your class. Then hit level up to find out what you need to do to level up your character.</p></div>
+        <form id="client-form" method="POST" autocomplete="off">
+          <label for="level" class="level">Level:</label>
+          <input type="text" id="levelInput" name="level" value="" class="levelInput"/>
+          <table id="classTable">
+          <tr>
+          <td><button type="button" class="classButton text" value="Barbarian">Barbarian</button></td>
+          <td><button type="button" class="classButton text" value="Bard">Bard</button></td>
+          <td><button type="button" class="classButton text" value="Cleric">Cleric</button></td>
+          </tr>
+          <tr>
+          <td><button type="button" class="classButton text" value="Druid">Druid</button></td>
+          <td><button type="button" class="classButton text" value="Fighter">Fighter</button></td>
+          <td><button type="button" class="classButton text" value="Monk">Monk</button></td>
+          </tr>
+          <tr>
+          <td><button type="button" class="classButton text" value="Paladin">Paladin</button></td>
+          <td><button type="button" class="classButton text" value="Ranger">Ranger</button></td>
+          <td><button type="button" class="classButton text" value="Rogue">Rogue</button></td>
+          </tr>
+          <tr>
+          <td><button type="button" class="classButton text" value="Sorcerer">Sorcerer</button></td>
+          <td><button type="button" class="classButton text" value="Warlock">Warlock</button></td>
+          <td><button type="button" class="classButton text" value="Wizard">Wizard</button></td>
+          </tr>
+          <input type="hidden" id="classInput" name="class" value="">
+          </tr>
+          </table>
+          <br>
+          <input type="submit" class="submit text" value="Level Up!"/>
+        </form>
+        <ol id="output" class="output">
+          <p id="error" style="color:red;text-align:center;margin-right:3%" class="text"></p>
+          <p id="outputHeader"></p>
+          <li id="hp" class="text"></li>
+          <li id="maxHitDie" class="text"></li>
+          <li id="profBonus" class="text"></li>
+          <li id="liFeature" class="staticFeature text"></li>
+          <li id="liSpellSlot" class="staticFeature text"></li>
+          <li id="cantripsKnown" class="text"></li>
+          <li id="spellsKnown" class="text"></li>
+          <li id="spellSaveDC" class="text"></li>
+          <li id="spellAttackMod"class="text"></li>
+          <li id="classOutput" class="text"></li>
+          <li id="classOutput2" class="text"></li>
+          <li id="classOutput3" class="text"></li>
+          <li id="subClass" class="text"></li>
+          <li id="liInvocation" class="staticFeature text"></li>
+          </ul>
+        </ol>
+      </div> <!--end middleScroll -->
       <div class="header">
-      <img src="parchmentBottom.png" class="parchmentEnds" style="margin-top:-2%; z-index:-1">
-      </div>
-    </div>
+      <img src="images/scrollBottom.png" class="parchmentEnds" style="margin-top:-2%; z-index:-1">
+      </div> 
+    </div> <!--end fullScroll -->
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/client.js"></script>

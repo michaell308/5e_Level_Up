@@ -6,27 +6,23 @@ console.log('Client-side code running');
 document.getElementById("subClass").setAttribute('style', 'white-space: pre-line;');
 
 jQuery(document).ready(function(){
-	//document.getElementById("scroll").style.visibility = "visible";
-	$(".scroll").animate({height: 'toggle'},'slow');
-	//$(".scroll").slideDown("slow");
-	//$(document.getElementById("scroll")).animate({height: 'toggle'},10600);
+	$("#middleScroll").animate({height: 'toggle'},'slow');
 });
 
-//$(document.getElementById("scroll")).animate({height: 'toggle'},'1');
 
 var lastClickedButton = null;
 
 //$('.classButton').css('background-image', 'url(SorcererButton.png)');
 //$('.classButton').css('background-image', 'url(' + this.value + 'Button.png)');
 $('.classButton').css('background-image', function(index,currentvalue) {
-	return 'url(' + this.value + 'Button.png)';
+	return 'url(images/' + this.value + 'Button.png)';
 });
 
 $('.classButton').click(function(e) {
 	//update hidden class input when any class button is clicked 
 	document.getElementById('classInput').value = this.value;
 	if (lastClickedButton !== null) {
-		lastClickedButton.style.backgroundImage = 'url(' + lastClickedButton.value + 'Button.png)';
+		lastClickedButton.style.backgroundImage = 'url(images/' + lastClickedButton.value + 'Button.png)';
 		lastClickedButton.style.color = '#cea564'; 
 	}
 	lastClickedButton = this;
