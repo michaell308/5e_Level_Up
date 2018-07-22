@@ -392,8 +392,8 @@ $('#client-form').on('submit', function (event) {
 				var subClassDoc = document.getElementById("subClass");
 				subClassDoc.textContent = "";
 				if (data.subclass !== null) {
-					subClassDoc.innerHTML += data.subclass_header + "<br>";
-					subClassDoc.innerHTML += data.subclass;
+					subClassDoc.innerHTML += data.subclass_header + "<br>" + data.subclass
+					+ "<br><br>" + "<b>Note:</b> Only subclasses in the SRD are included. For all subclasses, see the Player's Handbook";
 				}
 			}
 			document.getElementById("output").style.visibility = "visible";
