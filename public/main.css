@@ -355,7 +355,9 @@ th {
    list-style: none;
  }
 
-
+hr {
+  border-color: #cea564;
+}
 
 ul:empty {
 	//display:none;
