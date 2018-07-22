@@ -1,8 +1,7 @@
 /*Global attributes*/
 
 body {
-  /*TODO: decide on min-width*/
-  //min-width:1000px;
+  min-width:960px;
 }
 
 html {
@@ -114,8 +113,8 @@ li:empty {
   position:relative;
 }
 
-.headerText {
-  font-size: 350%;
+#headerText {
+  font-size: 55px;
   position: absolute;
   top: 25%;
   left: 50%;
@@ -125,7 +124,7 @@ li:empty {
 
 /* ------------------------MIDDLE SCROLL----------------------------------------------------- */
 
-.middleScroll {
+#middleScroll {
   background-image: url('images/scrollMiddle.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -226,6 +225,12 @@ li:empty {
 	width: 65%;
 	margin: auto;
 	text-align: left;
+}
+
+#error {
+  color:red;
+  text-align:center;
+  margin-right:5%;
 }
 
 #outputHeader {

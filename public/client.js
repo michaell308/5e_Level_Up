@@ -6,7 +6,14 @@ console.log('Client-side code running');
 document.getElementById("subClass").setAttribute('style', 'white-space: pre-line;');
 
 jQuery(document).ready(function(){
+	$('html, body').animate({
+	'scrollTop':   $('html').offset().top
+	}, 400);
 	$("#middleScroll").animate({height: 'toggle'},'slow');
+	//$(this).scrollTop(0);
+	/*$('html, body').animate({
+	'scrollTop':   $('#outputHeader').offset().top
+	}, 400);*/
 });
 
 
@@ -31,6 +38,12 @@ $('.classButton').click(function(e) {
 	this.style.background = "";
 	this.style.color = "black";
 	//this.style.color = 'white';
+});
+
+$('.submit').click(function(e) {
+	/*$(document.body).animate({
+	    'scrollTop':   $('#anchor').offset().top
+	}, 2000);*/
 });
 
 $('.staticFeature').on('click','.featureButton',function() {
@@ -108,7 +121,7 @@ $('#client-form').on('submit', function (event) {
 				document.getElementById("subClass").textContent = "";
             }
             else {
-            	document.getElementById("outputHeader").textContent = "To Become a Level " + data.level + " " + data.class + ": ";
+            	document.getElementById("outputHeader").innerHTML = "<hr>To Become a Level " + data.level + " " + data.class + ":";
             	document.getElementById("error").textContent = "";
 	            //HP
 	            document.getElementById("hp").innerHTML = "<b>HP:</b> Roll a d" + data.hit_die + ". Your hp increases by (the number you rolled) + (your constitution modifier)";
@@ -391,8 +404,15 @@ $('#client-form').on('submit', function (event) {
 					subClassDoc.innerHTML += data.subclass_header + "<br><hr>" + data.subclass
 					+ "<br><hr>" + "<b>Note:</b> Only subclasses in the SRD are included. For all subclasses, see the Player's Handbook";
 				}
+				$('html, body').animate({
+           		'scrollTop':   $('#outputHeader').offset().top
+         		}, 400);
 			}
 			document.getElementById("output").style.visibility = "visible";
+
+	//var element_to_scroll_to = document.getElementById('anchor');
+	//element_to_scroll_to.scrollIntoView();
+
         }
 	});
 });
