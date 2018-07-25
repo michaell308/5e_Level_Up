@@ -4,6 +4,7 @@ console.log('Client-side code running');
 //document.getElementById("classOutput").setAttribute('style', 'white-space: pre-line;');
 //document.getElementById("eldritchInvocations").setAttribute('style', 'white-space: pre-line;');
 document.getElementById("subClass").setAttribute('style', 'white-space: pre-line;');
+document.getElementById("hp").setAttribute('style', 'white-space: pre-line;');
 
 jQuery(document).ready(function(){
 	$('html, body').animate({
@@ -124,7 +125,17 @@ $('#client-form').on('submit', function (event) {
             	document.getElementById("outputHeader").innerHTML = "<hr>To Become a Level " + data.level + " " + data.class + ":";
             	document.getElementById("error").textContent = "";
 	            //HP
-	            document.getElementById("hp").innerHTML = "<b>HP:</b> Roll a d" + data.hit_die + ". Your hp increases by (the number you rolled) + (your constitution modifier)";
+	            var hpDoc = document.getElementById("hp")
+	           	hpDoc.innerHTML = "<b>HP:</b> Roll a d" + data.hit_die + 
+	            ". Your hp increases by (the number you rolled) + (your constitution modifier)\r\n";
+	            var hpButton = document.createElement("BUTTON");
+	            hpButton.innerHTML = "Note: Constitution modifier changes are retroactive <i class='down'>";
+	            hpButton.className = "featureButton note";
+	            var descriptionDiv = document.createElement("DIV");
+				descriptionDiv.hidden = true;
+				descriptionDiv.textContent = "If your Constitution modifier changes, your hit point maximum changes as well, as though you had the new modifier from 1st level. For example, if you raise your Constitution score when you reach 4th level and your Constitution modifier increases from +1 to +2, you adjust your hit point maximum as though the modifier had always been +2. So you add 3 hit points for your first three levels, and then roll your hit points for 4th level using your new modifier. Or if you're 7th level and some effect lowers your Constitution score so as to reduce your Constitution modifier by 1, your hit point maximum is reduced by 7.";
+				hpDoc.appendChild(hpButton);
+				hpDoc.appendChild(descriptionDiv);
 	            //Max hit die
 	            document.getElementById("maxHitDie").innerHTML = "<b>Hit Die:</b> The maximum number of hit die you have is now " + data.level;
 	            //Proficiency bonus

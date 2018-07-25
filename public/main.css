@@ -268,7 +268,14 @@ li:empty {
   -webkit-transform: rotate(45deg);
 }
 
-.up {
-	transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
+.note, #hp > div {
+  font-size:22px;
+}
+
+.note {
+  margin-left:-6px;
+}
+
+#hp {
+  margin-bottom:-20px;
 }
