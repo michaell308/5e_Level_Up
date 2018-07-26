@@ -3,8 +3,7 @@ console.log('Client-side code running');
 //document.getElementById("outputHeader").setAttribute('style', 'white-space: pre-line;');
 //document.getElementById("classOutput").setAttribute('style', 'white-space: pre-line;');
 //document.getElementById("eldritchInvocations").setAttribute('style', 'white-space: pre-line;');
-document.getElementById("subClass").setAttribute('style', 'white-space: pre-line;');
-document.getElementById("hp").setAttribute('style', 'white-space: pre-line;');
+//document.getElementById("hp").setAttribute('style', 'white-space: pre-line;');
 
 jQuery(document).ready(function(){
 	$('html, body').animate({
