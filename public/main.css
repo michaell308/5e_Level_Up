@@ -1,14 +1,13 @@
 /*Global attributes*/
+html {
+  height: 100%;
+  background-image: url("images/background_seamless-scaled-min.jpg"); 
+  background-position: center center;
+  background-size:100%;
+}
 
 body {
   min-width:960px;
-}
-
-html {
-	height: 100%;
-	background-image: url("images/background_seamless.jpg"); 
-  background-position: center center;
-  background-size:100%;
 }
 
 a:link, a:visited {
@@ -125,7 +124,7 @@ li:empty {
 /* ------------------------MIDDLE SCROLL----------------------------------------------------- */
 
 #middleScroll {
-  background-image: url('images/scrollMiddle.png');
+  background-image: url('images/scrollMiddle-scaled-min.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 75% 100%;
