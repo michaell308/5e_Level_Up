@@ -81,8 +81,9 @@ function successfulFormSubmit(data) {
     }
     else { //no error, so write output
 	    ga('send', {
-            'hitType' : 'pageview',
-            'page' : '/successful-level-up' //virtual page (aka, does not actually exist) that you can now track in GA Goals as a destination page
+            'hitType' : 'event',
+            'eventCategory' : 'Forms',
+            'eventAction' : 'successful-level-up'
         });
     	//Ouput Header (Class/Level)
     	document.getElementById("outputHeader").innerHTML = "<hr>To Become a Level " + data.level + " " + data.class + ":";
