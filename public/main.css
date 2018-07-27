@@ -1,5 +1,6 @@
 /*Global attributes*/
 html {
+  touch-action: manipulation;
   height: 100%;
   background-image: url("images/background_seamless-scaled-min.jpg"); 
   background-position: center center;
