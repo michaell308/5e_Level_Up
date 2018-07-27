@@ -1,11 +1,7 @@
 //run when the document is ready
 jQuery(document).ready(function(){
-	//go to the top of the page
-	$('html, body').animate({
-	'scrollTop':   $('html').offset().top
-	}, 400);
 	//animate scroll opening up
-	$("#middleScroll").animate({height: 'toggle'},'slow');
+	$("#middleScroll").velocity("slideDown", { duration: 500 });
 });
 
 //show background image for class button based on its value (Barbarian, Bard, etc.)
@@ -47,12 +43,15 @@ $('.staticFeature').on('click','.featureButton',function() {
 				descriptionDiv.hidden = true;
 				descriptionDiv.innerHTML = data.description;
 				savedThis.parent().append(descriptionDiv);
-				$(descriptionDiv).animate({height: 'toggle'});
+				$(descriptionDiv).velocity("slideDown", { duration: 300 });
 	        }
     	});
 	}
 	else { //animate existing description div
-		$(this).parent().children("div").animate({height: 'toggle'});
+		var descriptionDiv = $(this).parent().children("div");
+		var isOpen = descriptionDiv.is(':visible'),
+        slideDir = isOpen ? 'slideUp' : 'slideDown';
+		descriptionDiv.velocity(slideDir,{duration:300});
 	}
 });
 
@@ -211,9 +210,7 @@ function successfulFormSubmit(data) {
 			+ "<br><hr>" + "<b>Note:</b> Only subclasses in the SRD are included. For all subclasses, see the Player's Handbook";
 		}
 		//scroll down to the output
-		$('html, body').animate({
-   		'scrollTop':   $('#outputHeader').offset().top
- 		}, 400);
+		$('#outputHeader').velocity("scroll", { duration: 400 });
 	}
 }
 
