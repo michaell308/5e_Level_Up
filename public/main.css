@@ -2,9 +2,10 @@
 html {
   touch-action: manipulation;
   height: 100%;
+  width:auto;
   background-image: url("images/background_seamless-scaled-min.jpg"); 
   background-position: center center;
-  background-size:100%;
+  background-repeat: repeat-y;
 }
 
 body {
