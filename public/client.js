@@ -1,7 +1,12 @@
 //run when the document is ready
 jQuery(document).ready(function(){
 	//animate scroll opening up
-	$("#middleScroll").velocity("slideDown", { duration: 500 });
+	$("#middleScroll").velocity("slideDown", { 
+    duration: 500,
+    complete: function() { //ensure element is shown
+    	document.getElementById("middleScroll").style.display = "block";
+    }
+	});
 });
 
 //show background image for class button based on its value (Barbarian, Bard, etc.)
@@ -39,11 +44,18 @@ $('.staticFeature').on('click','.featureButton',function() {
 	        success: function(data) { //on successful post, data contains anything sent back from server
 	        	//create description div and animate text top to bottom
             	var descriptionDiv = document.createElement("DIV");
-            	descriptionDiv.setAttribute('style', 'white-space: pre-line;');
-				descriptionDiv.hidden = true;
-				descriptionDiv.innerHTML = data.description;
-				savedThis.parent().append(descriptionDiv);
-				$(descriptionDiv).velocity("slideDown", { duration: 300 });
+            	if (savedThis.parent().children().length === 1) { //ensures text isn't duplicated on spam click
+	            	descriptionDiv.setAttribute('style', 'white-space: pre-line;');
+					descriptionDiv.style.display = "none";
+					descriptionDiv.innerHTML = data.description;
+					savedThis.parent().append(descriptionDiv);
+					$(descriptionDiv).velocity("slideDown", { 
+					    duration: 300,
+					    complete: function() { //ensure element is shown
+					    	descriptionDiv.style.display = "block";
+					    }
+					});
+				}
 	        }
     	});
 	}
@@ -51,7 +63,12 @@ $('.staticFeature').on('click','.featureButton',function() {
 		var descriptionDiv = $(this).parent().children("div");
 		var isOpen = descriptionDiv.is(':visible'),
         slideDir = isOpen ? 'slideUp' : 'slideDown';
-		descriptionDiv.velocity(slideDir,{duration:300});
+		descriptionDiv.velocity(slideDir, { 
+		    duration: 300,
+		    complete: function() { //ensure element is shown
+		    	descriptionDiv.css("display", isOpen ? "none" : "block");
+		    }
+		});
 	}
 });
 
