@@ -1,6 +1,7 @@
 /*Global attributes*/
 html {
   touch-action: manipulation;
+  -ms-touch-action: manipulation;
   height: 100%;
   width:auto;
   background-image: url("images/background_seamless-scaled-min.jpg"); 
@@ -218,7 +219,7 @@ li:empty {
   margin-left:-5px;
 }
 
-.submit:active {
+.submit:focus {
   filter:brightness(150%);
 }
 
@@ -257,10 +258,9 @@ li:empty {
   color: #cc3300; /*orange*/
 }
 
-.featureButton:active {
+.featureButton:focus {
   filter:brightness(150%);
 }
-
 
 #liFeature > ul ul {
   list-style-type: disc;
