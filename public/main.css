@@ -187,10 +187,10 @@ li:empty {
   outline: none;
   color: #cea564;
   text-shadow:
-    -0.8px -0.8px 0 #000,
-    0.8px -0.8px 0 #000,
-    -0.8px 0.8px 0 #000,
-    0.8px 0.8px 0 #000;
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .submit {
@@ -215,6 +215,7 @@ li:empty {
 }
 
 .submit:focus {
+  -webkit-filter: brightness(150%);
   filter:brightness(150%);
 }
 
@@ -243,6 +244,9 @@ li:empty {
 .staticFeature > ul > li {
   margin-bottom:1%;
 }
+.staticFeature > ul > li:last-child {
+  margin-bottom:0%;
+}
 
 .featureButton { 
   background-color: transparent;
@@ -254,6 +258,7 @@ li:empty {
 }
 
 .featureButton:focus {
+  -webkit-filter: brightness(150%);
   filter:brightness(150%);
 }
 

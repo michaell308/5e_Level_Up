@@ -28,44 +28,6 @@ $('.classButton').click(function(e) {
 	this.style.color = "black";
 });
 
-
-$('.staticFeature').on('click','.featureButton',function() {
-	if ($(this).parent().children().length === 1) { //first click on feature
-		var data = {};
-		data.feature = this.value;
-		var savedThis = $(this);
-		$.ajax({
-			type: 'POST',
-			data: JSON.stringify(data),
-	        contentType: 'application/json',
-	        url: '/',						
-	        success: function(data) { //on successful post, data contains anything sent back from server
-	        	//create description div and animate text top to bottom
-            	var descriptionDiv = document.createElement("DIV");
-            	if (savedThis.parent().children().length === 1) { //ensures text isn't duplicated on spam click
-	            	descriptionDiv.setAttribute('style', 'white-space: pre-line;');
-					descriptionDiv.style.display = "none";
-					descriptionDiv.innerHTML = data.description;
-					savedThis.parent().append(descriptionDiv);
-					$(descriptionDiv).velocity("slideDown", { duration: 150	});
-					if (!$(descriptionDiv).is('.velocity-animating')) {
-						descriptionDiv.style.display = "block";
-					}
-				}
-	        }
-    	});
-	}
-	else { //animate existing description div
-		var descriptionDiv = $(this).parent().children("div");
-		var isOpen = descriptionDiv.is(':visible'),
-        slideDir = isOpen ? 'slideUp' : 'slideDown';
-		descriptionDiv.velocity(slideDir, { duration: 150 });
-		if (!descriptionDiv.is('.velocity-animating')) {
-			descriptionDiv.css("display", isOpen ? "none" : "block");
-		}
-	}
-});
-
 $('#client-form').on('submit', function (event) {
     event.preventDefault(); //prevent form from refreshing page
     
@@ -104,6 +66,9 @@ function successfulFormSubmit(data) {
         var hpButton = document.createElement("BUTTON");
         hpButton.innerHTML = "Note: Constitution modifier changes are retroactive <i class='down'>";
         hpButton.className = "featureButton note";
+        $(hpButton).on("click", function(){
+			slideButtonText(this);
+		});
         var descriptionDiv = document.createElement("DIV");
 		descriptionDiv.hidden = true;
 		descriptionDiv.textContent = "If your Constitution modifier changes, your hit point maximum changes as well, as though you had the new modifier from 1st level. For example, if you raise your Constitution score when you reach 4th level and your Constitution modifier increases from +1 to +2, you adjust your hit point maximum as though the modifier had always been +2. So you add 3 hit points for your first three levels, and then roll your hit points for 4th level using your new modifier. Or if you're 7th level and some effect lowers your Constitution score so as to reduce your Constitution modifier by 1, your hit point maximum is reduced by 7.";
@@ -278,8 +243,48 @@ function createListButton(ul, buttonName) {
 	button.type = "button";
 	button.className = "featureButton text";
 	button.value = buttonName;
+	$(button).on("click", function(){
+		slideButtonText(this);
+	});
 	node.appendChild(button); 
 	ul.appendChild(node);
+}
+
+function slideButtonText(thisButton) {
+	if ($(thisButton).parent().children().length === 1) { //first click on feature
+		var data = {};
+		data.feature = thisButton.value;
+		var savedThis = $(thisButton);
+		$.ajax({
+			type: 'POST',
+			data: JSON.stringify(data),
+	        contentType: 'application/json',
+	        url: '/',						
+	        success: function(data) { //on successful post, data contains anything sent back from server
+	        	//create description div and animate text top to bottom
+	        	var descriptionDiv = document.createElement("DIV");
+	        	if (savedThis.parent().children().length === 1) { //ensures text isn't duplicated on spam click
+	            	descriptionDiv.setAttribute('style', 'white-space: pre-line;');
+					descriptionDiv.style.display = "none";
+					descriptionDiv.innerHTML = data.description;
+					savedThis.parent().append(descriptionDiv);
+					$(descriptionDiv).velocity("slideDown", { duration: 150	});
+					if (!$(descriptionDiv).is('.velocity-animating')) {
+						descriptionDiv.style.display = "block";
+					}
+				}
+	        }
+		});
+	}
+	else { //animate existing description div
+		var descriptionDiv = $(thisButton).parent().children("div");
+		var isOpen = descriptionDiv.is(':visible'),
+	    slideDir = isOpen ? 'slideUp' : 'slideDown';
+		descriptionDiv.velocity(slideDir, { duration: 150 });
+		if (!descriptionDiv.is('.velocity-animating')) {
+			descriptionDiv.css("display", isOpen ? "none" : "block");
+		}
+	}
 }
 
 function createDivUnderUL(ul, text) {
