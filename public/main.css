@@ -2,15 +2,12 @@
 html {
   touch-action: manipulation;
   -ms-touch-action: manipulation;
-  height: 100%;
-  width:auto;
-  background-image: url("images/background_seamless-scaled-min.jpg"); 
+  height: 110%;
+  min-width:960px;
+  background-image: url("images/background_seamless-scaled-min.jpeg"); 
+  background-size: 100% auto;
   background-position: center center;
   background-repeat: repeat-y;
-}
-
-body {
-  min-width:960px;
 }
 
 a:link, a:visited {

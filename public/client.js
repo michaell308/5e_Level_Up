@@ -47,7 +47,7 @@ $('.staticFeature').on('click','.featureButton',function() {
 					descriptionDiv.style.display = "none";
 					descriptionDiv.innerHTML = data.description;
 					savedThis.parent().append(descriptionDiv);
-					$(descriptionDiv).velocity("slideDown", { duration: 300	});
+					$(descriptionDiv).velocity("slideDown", { duration: 150	});
 					if (!$(descriptionDiv).is('.velocity-animating')) {
 						descriptionDiv.style.display = "block";
 					}
@@ -59,7 +59,7 @@ $('.staticFeature').on('click','.featureButton',function() {
 		var descriptionDiv = $(this).parent().children("div");
 		var isOpen = descriptionDiv.is(':visible'),
         slideDir = isOpen ? 'slideUp' : 'slideDown';
-		descriptionDiv.velocity(slideDir, { duration: 300 });
+		descriptionDiv.velocity(slideDir, { duration: 150 });
 		if (!descriptionDiv.is('.velocity-animating')) {
 			descriptionDiv.css("display", isOpen ? "none" : "block");
 		}
