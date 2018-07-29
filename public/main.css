@@ -153,18 +153,16 @@ li:empty {
 
 .level {
 	font-size: 30px;
-	width: 5%;
-  margin-bottom:1%;
-  margin-left:-3%;
-  margin-right:3%;
+  margin-left:-50px;
+  margin-right:50px;
 }
 
 .levelInput {
   font-size: 30px;
   width: 110px;
   margin-bottom:1%;
-  margin-left:-2%;
-  margin-right:2%;
+  margin-left:-40px;
+  margin-right:40px;
 }
 
 #classTable { 
