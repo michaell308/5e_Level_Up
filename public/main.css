@@ -192,10 +192,10 @@ li:empty {
   outline: none;
   color: #cea564;
   text-shadow:
-    -0.6px -0.6px 0 #000,
-    0.6px -0.6px 0 #000,
-    -0.6px 0.6px 0 #000,
-    0.6px 0.6px 0 #000;
+    -0.8px -0.8px 0 #000,
+    0.8px -0.8px 0 #000,
+    -0.8px 0.8px 0 #000,
+    0.8px 0.8px 0 #000;
 }
 
 .submit {
