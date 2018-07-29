@@ -1,12 +1,10 @@
 //run when the document is ready
 jQuery(document).ready(function(){
 	//animate scroll opening up
-	$("#middleScroll").velocity("slideDown", { 
-    duration: 500,
-    complete: function() { //ensure element is shown
-    	document.getElementById("middleScroll").style.display = "block";
-    }
-	});
+	$("#middleScroll").velocity("slideDown", { duration: 500});
+	if (!$("#middleScroll").is('.velocity-animating')) {
+		document.getElementById("middleScroll").style.display = "block";
+	}
 });
 
 //show background image for class button based on its value (Barbarian, Bard, etc.)
@@ -49,12 +47,10 @@ $('.staticFeature').on('click','.featureButton',function() {
 					descriptionDiv.style.display = "none";
 					descriptionDiv.innerHTML = data.description;
 					savedThis.parent().append(descriptionDiv);
-					$(descriptionDiv).velocity("slideDown", { 
-					    duration: 300,
-					    complete: function() { //ensure element is shown
-					    	descriptionDiv.style.display = "block";
-					    }
-					});
+					$(descriptionDiv).velocity("slideDown", { duration: 300	});
+					if (!$(descriptionDiv).is('.velocity-animating')) {
+						descriptionDiv.style.display = "block";
+					}
 				}
 	        }
     	});
@@ -63,12 +59,10 @@ $('.staticFeature').on('click','.featureButton',function() {
 		var descriptionDiv = $(this).parent().children("div");
 		var isOpen = descriptionDiv.is(':visible'),
         slideDir = isOpen ? 'slideUp' : 'slideDown';
-		descriptionDiv.velocity(slideDir, { 
-		    duration: 300,
-		    complete: function() { //ensure element is shown
-		    	descriptionDiv.css("display", isOpen ? "none" : "block");
-		    }
-		});
+		descriptionDiv.velocity(slideDir, { duration: 300 });
+		if (!descriptionDiv.is('.velocity-animating')) {
+			descriptionDiv.css("display", isOpen ? "none" : "block");
+		}
 	}
 });
 
