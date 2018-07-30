@@ -184,7 +184,6 @@ li:empty {
   background-position: center;
   background-size:100% 100%;
   border: none;
-  outline: none;
   color: #cea564;
   text-align:center;
   text-shadow:
@@ -216,8 +215,8 @@ li:empty {
 }
 
 .submit:focus {
-  filter: brightness(200%);
-  -webkit-filter: brightness(200%);
+  filter: brightness(150%);
+  -webkit-filter: brightness(150%);
 }
 
 /* ------------------------OUTPUT----------------------------------------------------- */
@@ -246,6 +245,8 @@ li:empty {
   background-color: transparent;
   border: none;
   outline:none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
   margin:0;
   padding:0;
   font-size: 30px;
@@ -261,8 +262,8 @@ li:empty {
 }
 
 .featureButton:focus {
-  filter: brightness(200%);
-  -webkit-filter: brightness(200%);
+  filter: brightness(150%);
+  -webkit-filter: brightness(150%);
 }
 
 #liFeature > ul ul {
