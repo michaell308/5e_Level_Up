@@ -245,8 +245,6 @@ li:empty {
   background-color: transparent;
   border: none;
   outline:none;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent;
   margin:0;
   padding:0;
   font-size: 30px;
@@ -261,7 +259,7 @@ li:empty {
   margin-bottom:0%;
 }
 
-.featureButton:focus {
+.featureButton:focus, .featureButton:active {
   filter: brightness(150%);
   -webkit-filter: brightness(150%);
 }
