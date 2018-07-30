@@ -216,8 +216,8 @@ li:empty {
 }
 
 .submit:focus {
+  filter: brightness(200%);
   -webkit-filter: brightness(200%);
-  filter: brightness(150%);
 }
 
 /* ------------------------OUTPUT----------------------------------------------------- */
@@ -261,8 +261,8 @@ li:empty {
 }
 
 .featureButton:focus {
+  filter: brightness(200%);
   -webkit-filter: brightness(200%);
-  filter: brightness(150%);
 }
 
 #liFeature > ul ul {
