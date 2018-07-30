@@ -166,9 +166,9 @@ li:empty {
 }
 
 #classTable { 
-  width: 600px;
+  width: 700px;
   border-collapse:separate; 
-  border-spacing:24px;
+  border-spacing:30px;
   margin:auto;
 }
 
@@ -216,8 +216,8 @@ li:empty {
 }
 
 .submit:focus {
-  filter:brightness(150%);
-  -webkit-filter: brightness(150%);
+  filter:brightness(1.5);
+  -webkit-filter: brightness(1.5);
 }
 
 /* ------------------------OUTPUT----------------------------------------------------- */
@@ -259,8 +259,8 @@ li:empty {
 }
 
 .featureButton:focus {
-  filter:brightness(150%);
-  -webkit-filter: brightness(150%);
+  filter:brightness(1.5);
+  -webkit-filter: brightness(1.5);
 }
 
 #liFeature > ul ul {
