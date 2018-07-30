@@ -243,7 +243,6 @@ function createListButton(ul, buttonName) {
 	button.type = "button";
 	button.className = "featureButton text";
 	button.value = buttonName;
-	button.tabIndex = 0;
 	$(button).on("click", function(){
 		slideButtonText(this);
 	});

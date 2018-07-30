@@ -259,7 +259,7 @@ li:empty {
   margin-bottom:0%;
 }
 
-.featureButton:focus, .featureButton:active {
+.featureButton:focus {
   filter: brightness(150%);
   -webkit-filter: brightness(150%);
 }
