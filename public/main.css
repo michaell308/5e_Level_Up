@@ -280,3 +280,7 @@ li:empty {
 #hp {
   margin-bottom:-20px;
 }
+
+#subClass,.subClass2 {
+  border-style: double;
+}

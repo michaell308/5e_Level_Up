@@ -61,8 +61,10 @@ function successfulFormSubmit(data) {
     	document.getElementById("outputHeader").innerHTML = "<hr>To Become a Level " + data.level + " " + data.class + ":";
         //HP
         var hpDoc = document.getElementById("hp")
+        var hpAverage = parseInt(data.hit_die)/2+1
        	hpDoc.innerHTML = "<b>HP:</b> Roll a d" + data.hit_die + 
-        ". Your hp increases by (the number you rolled) + (your constitution modifier)\r\n";
+        ". Your hp increases by (the number you rolled) + (your constitution modifier)\r\n" +
+        "<b>(HP Average Alternative):</b> Instead, you can choose to increase your hp by " + hpAverage + " + (your constitution modifier)\r\n";
         var hpButton = document.createElement("BUTTON");
         hpButton.innerHTML = "Note: Constitution modifier changes are retroactive <i class='down'>";
         hpButton.className = "featureButton note";
@@ -150,6 +152,10 @@ function successfulFormSubmit(data) {
 				document.getElementById("classOutput3").innerHTML = "<b>Update Ki Save DC</b> = 8 + " + data.prof_bonus + " + your Wisdom modifier";
 			}
 		}
+		else if (userClass === "Paladin") {
+			var poolPoints = data.level * 5;
+			classOutput.innerHTML = "<b>Lay on Hands:</b> The total number of points in your Lay on Hands pool is now " + poolPoints;
+		}
 		//Rogue
 		else if (userClass === "Rogue") {
 			var num_sneak_attack_die = data.num_sneak_attack_die;
@@ -178,12 +184,31 @@ function successfulFormSubmit(data) {
 				document.getElementById("classOutput2").innerHTML = "<b>Invocations Known:</b> You now know " + invocations_known + " invocations";
 			}
 
-			writeInvocations();
+			writeInvocations(data.level);
+		}
+		else if (userClass === "Wizard") {
+			 classOutput.innerHTML = "<b>New Spells:</b> You can add two wizard spells of your choice to your spellbook for free. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table."
 		}
 		//Subclass
 		if (data.subclass !== null) {
-			document.getElementById("subClass").innerHTML = data.subclass_header + "<br><hr>" + data.subclass
-			+ "<br><hr>" + "<b>Note:</b> Only subclasses in the SRD are included. For all subclasses, see the Player's Handbook";
+			//document.getElementById("subClassHeader").innerHTML = "Choose One:" + document.getElementById("subClassHeader").innerHTML;
+			document.getElementById("subClassHeader").hidden = false;
+			document.getElementById("subClass").innerHTML = data.subclass_header + "<br><hr>" + data.subclass;
+			//$( "<span class='reset'><b>Note:</b> Only subclasses in the SRD are included. For all subclasses, see the Player's Handbook</span>" ).insertAfter("#subClass2");
+		}
+		else {
+			document.getElementById("subClassHeader").hidden = true;
+		}
+		$(".subClass2").remove();
+		$(".brRemove").remove();
+		if (data.non_srd_subclasses !== null) {
+			var nonSrdSubclasses = data.non_srd_subclasses.split(",");
+			//var nonSrdSubclasses = "Arcane Tradition,Next Thing,School of Cool".split(",");
+			for (var i = nonSrdSubclasses.length-1; i >= 0; i--) {
+				var nonSrdSubclass = nonSrdSubclasses[i];
+				$("<p class='subClass2'>" + nonSrdSubclass + "</p><br class='brRemove'>").insertAfter(".afterSC");
+			} 
+			//document.getElementById("subClass2").innerHTML = "<b>Arcane Tradition - School of Illusion</b> (PHB p. 678)";
 		}
 		//scroll down to the output
 		$('#outputHeader').velocity("scroll", { duration: 400 });
@@ -293,7 +318,7 @@ function createDivUnderUL(ul, text) {
 	ul.appendChild(newDiv);
 }
 
-function writeInvocations() {
+function writeInvocations(level) {
 	var invocationLI = document.getElementById("invocationLI");
 	invocationLI.innerHTML = "<b>Eldritch Invocations:</b> You can choose one of the invocations you know and replace it with another. If an eldritch invocation has prerequisites, you must meet them to learn it. You can learn the invocation at the same time that you meet its prerequisites. A level prerequisite refers to your level in this class.";
 	var eldritchInvocationUL = document.createElement("UL");
@@ -323,7 +348,7 @@ function writeInvocations() {
 	}
 	eldritchInvocationUL.appendChild(document.createElement("BR"));
 
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: eldritch blast cantrip");
+	createDivUnderUL(eldritchInvocationUL,"Prerequisite: Eldritch Blast Cantrip");
 	for (var i = 0; i < ebCantrip.length; i++) {
 		createListButton(eldritchInvocationUL, ebCantrip[i]);
 	}
@@ -337,38 +362,47 @@ function writeInvocations() {
 	createListButton(eldritchInvocationUL, pactOfChain);
 	eldritchInvocationUL.appendChild(document.createElement("BR"));
 
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 5th level");
-	for (var i = 0; i < fifthLevel.length; i++) {
-		createListButton(eldritchInvocationUL, fifthLevel[i]);
-	}
-	eldritchInvocationUL.appendChild(document.createElement("BR"));
-
+	if (level >= 5) {
+		createDivUnderUL(eldritchInvocationUL,"Prerequisite: 5th level");
+		for (var i = 0; i < fifthLevel.length; i++) {
+			createListButton(eldritchInvocationUL, fifthLevel[i]);
+		}
+		eldritchInvocationUL.appendChild(document.createElement("BR"));
+	
 	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 5th level, Pact of the Blade feature");
 	createListButton(eldritchInvocationUL, fifthLevelPactOfBlade);
 	eldritchInvocationUL.appendChild(document.createElement("BR"));
-
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 7th level");
-	for (var i = 0; i < seventhLevel.length; i++) {
-		createListButton(eldritchInvocationUL, seventhLevel[i]);
 	}
-	eldritchInvocationUL.appendChild(document.createElement("BR"));
-
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 9th level");
-	for (var i = 0; i < ninethLevel.length; i++) {
-		createListButton(eldritchInvocationUL, ninethLevel[i]);
+	if (level >= 7) {
+		createDivUnderUL(eldritchInvocationUL,"Prerequisite: 7th level");
+		for (var i = 0; i < seventhLevel.length; i++) {
+			createListButton(eldritchInvocationUL, seventhLevel[i]);
+		}
+		eldritchInvocationUL.appendChild(document.createElement("BR"));
 	}
-	eldritchInvocationUL.appendChild(document.createElement("BR"));
 
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 12th level, Pact of the Blade feature");
-	createListButton(eldritchInvocationUL, twelvethLevelPactOfBlade);
-	eldritchInvocationUL.appendChild(document.createElement("BR"));
-
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 15th level");
-	for (var i = 0; i < fifteenthLevel.length; i++) {
-		createListButton(eldritchInvocationUL, fifteenthLevel[i]);
+	if (level >= 9) {
+		createDivUnderUL(eldritchInvocationUL,"Prerequisite: 9th level");
+		for (var i = 0; i < ninethLevel.length; i++) {
+			createListButton(eldritchInvocationUL, ninethLevel[i]);
+		}
+		eldritchInvocationUL.appendChild(document.createElement("BR"));
 	}
-	eldritchInvocationUL.appendChild(document.createElement("BR"));
 
-	createDivUnderUL(eldritchInvocationUL,"Prerequisite: 15th level, Pact of the Chain feature");
-	createListButton(eldritchInvocationUL, fifteenthLevelPactOfChain);
+	if (level >= 12) {
+		createDivUnderUL(eldritchInvocationUL,"Prerequisite: 12th level, Pact of the Blade feature");
+		createListButton(eldritchInvocationUL, twelvethLevelPactOfBlade);
+		eldritchInvocationUL.appendChild(document.createElement("BR"));
+	}
+
+	if (level >= 15) {
+		createDivUnderUL(eldritchInvocationUL,"Prerequisite: 15th level");
+		for (var i = 0; i < fifteenthLevel.length; i++) {
+			createListButton(eldritchInvocationUL, fifteenthLevel[i]);
+		}
+		eldritchInvocationUL.appendChild(document.createElement("BR"));
+
+		createDivUnderUL(eldritchInvocationUL,"Prerequisite: 15th level, Pact of the Chain feature");
+		createListButton(eldritchInvocationUL, fifteenthLevelPactOfChain);
+	}
 }
