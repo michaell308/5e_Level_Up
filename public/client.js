@@ -97,8 +97,18 @@ function successfulFormSubmit(data) {
 		//Spell Slots Table
 		var userClass = data.class;
         writeSSTable(data.spell_slots,userClass);
+        //Prepared spells
+       	var stat_modifier = data.stat_modifier;
+		if (userClass === "Cleric" || userClass === "Druid" || userClass === "Paladin" || userClass === "Wizard") {
+			var preparedLevel = data.level;
+			if (userClass === "Paladin") preparedLevel = Math.floor(data.level/2);
+			document.getElementById("spellsPrepared").innerHTML = "<b>Update Number of Prepared Spells</b> = " + stat_modifier + " modifier + " + preparedLevel + " (minimum of one spell)"
+		}
+		//Swap spells
+		if (userClass === "Bard" || userClass === "Ranger" || userClass === "Sorcerer" || userClass === "Warlock") {
+			document.getElementById("swapSpells").innerHTML = "<b>Swap Spells:</b> When you gain a level in this class, you can choose one of the " + userClass + " spells you know and replace it with another spell from the " + userClass + " spell list, which also must be of a level for which you have spell slots.";
+		}
 		//Spell Save DC and Spell Attack Modifier
-		var stat_modifier = data.stat_modifier;
 		if (stat_modifier !== "" && is_pbi === 1) {
 			document.getElementById("spellSaveDC").innerHTML = "<b>Update Spell Save DC</b> = 8 + " + data.prof_bonus +" + " + stat_modifier +" modifier";
 			document.getElementById("spellAttackMod").innerHTML = "<b>Update Spell Attack Modifier</b> = " + data.prof_bonus +" + " + stat_modifier +" modifier";
@@ -191,25 +201,23 @@ function successfulFormSubmit(data) {
 		}
 		//Subclass
 		if (data.subclass !== null) {
-			//document.getElementById("subClassHeader").innerHTML = "Choose One:" + document.getElementById("subClassHeader").innerHTML;
 			document.getElementById("subClassHeader").hidden = false;
 			document.getElementById("subClass").innerHTML = data.subclass_header + "<br><hr>" + data.subclass;
-			//$( "<span class='reset'><b>Note:</b> Only subclasses in the SRD are included. For all subclasses, see the Player's Handbook</span>" ).insertAfter("#subClass2");
 		}
 		else {
 			document.getElementById("subClassHeader").hidden = true;
 		}
+		//Non-SRD Subclass Titles
 		$(".subClass2").remove();
 		$(".brRemove").remove();
 		if (data.non_srd_subclasses !== null) {
 			var nonSrdSubclasses = data.non_srd_subclasses.split(",");
-			//var nonSrdSubclasses = "Arcane Tradition,Next Thing,School of Cool".split(",");
 			for (var i = nonSrdSubclasses.length-1; i >= 0; i--) {
 				var nonSrdSubclass = nonSrdSubclasses[i];
 				$("<p class='subClass2'>" + nonSrdSubclass + "</p><br class='brRemove'>").insertAfter(".afterSC");
 			} 
-			//document.getElementById("subClass2").innerHTML = "<b>Arcane Tradition - School of Illusion</b> (PHB p. 678)";
 		}
+
 		//scroll down to the output
 		$('#outputHeader').velocity("scroll", { duration: 400 });
 	}
