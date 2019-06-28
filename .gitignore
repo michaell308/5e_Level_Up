@@ -92,3 +92,12 @@ sql_statements
 
 #Original images
 public/original_images
+
+#yaml
+app.yaml
+
+#documentation
+Documentation.txt
+
+#gcloudignore
+.gcloudignore
