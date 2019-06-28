@@ -6,7 +6,6 @@ html {
   min-width:960px;
   background-image: url("images/background_seamless-scaled-min.jpeg"); 
   background-size: 100% auto;
-  background-position: center center;
   background-repeat: repeat-y;
 }
 
